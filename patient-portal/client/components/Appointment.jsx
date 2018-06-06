@@ -103,7 +103,7 @@ class Appointment extends Component {
 
 Appointment.propTypes = {
   appt: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     status: PropTypes.string,
     purpose: PropTypes.string,
     datetime: PropTypes.string,

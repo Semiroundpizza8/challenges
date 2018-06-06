@@ -51,7 +51,13 @@ STEP 1: Set up retrieve patient by UUID route in API
   * While there was already a get patient by ID function set up, I found that it was getting the patient according to their index in db.json, and not by their actual UUID. To remedy this, I created a method in db-api to find the user by their UUID. That being said, I have very limited experience using lowDB in the past so there may be some built-in way to access the user by their UUID that I'm unaware of, so I'm planning to come back and look more into this later.
 
 STEP 2: Set up reducer to retrieve info
-  * 
+  modified:   client/reducers/index.js
+  modified:   client/reducers/patient.js
+  * The reducer does reducer things... nothing too exciting to say here.
 
-STEP 3: communicate between PatientHome and Reducer
-STEP 4: Fill in information
+STEP 3: communicate between PatientHome and Reducer to fill in front end
+    modified:   client/components/Appointment.jsx
+    modified:   client/components/PatientDetails.jsx
+    modified:   client/containers/PatientHome.jsx
+    modified:   client/reducers/patient.js (small formatting changes)
+  * A couple of the components needed to be changed in order to account for the differences in the dummy data and the actual database data, and the file functionality still needs to be fleshed out.
