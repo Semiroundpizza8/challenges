@@ -21,11 +21,10 @@ function hydratePatientData(patient) {
 export default Router()
   .get('/', (req, res) => {
     const allPatients = Api.Patient.get();
-    console.log("AP-------------------", allPatients);
     res.status(200).send(allPatients.map(hydratePatientData));
   })
   .get('/:id', (req, res) => {
-    console.log('REQ.PARAMS.ID----------', req.params.id);
+    // BO: Now gets the users information by their UUID, represented by req.params.id
     const patient = Api.Patient.getById(req.params.id);
     // const patient = Api.Patient.get(req.params.id);
     res.status(200).send(hydratePatientData(patient));
