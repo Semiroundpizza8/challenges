@@ -21,9 +21,12 @@ function hydratePatientData(patient) {
 export default Router()
   .get('/', (req, res) => {
     const allPatients = Api.Patient.get();
+    console.log("AP-------------------", allPatients);
     res.status(200).send(allPatients.map(hydratePatientData));
   })
   .get('/:id', (req, res) => {
-    const patient = Api.Patient.get(req.params.id);
+    console.log('REQ.PARAMS.ID----------', req.params.id);
+    const patient = Api.Patient.getById(req.params.id);
+    // const patient = Api.Patient.get(req.params.id);
     res.status(200).send(hydratePatientData(patient));
   });

@@ -56,6 +56,21 @@ function createApi(model) {
       }
       return db.get(model.name).value();
     },
+    getById: (param) => {
+      if (_.isString(param) || _.isNumber(param)) {
+        return db
+          .get(model.name)
+          .find({ id: param })
+          .value();
+      }
+      if (_.isObject(param)) {
+        return db
+          .get(model.name)
+          .filter(param)
+          .value();
+      }
+      return db.get(model.name).value();
+    },
   };
 }
 
