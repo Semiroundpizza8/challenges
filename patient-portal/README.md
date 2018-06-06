@@ -43,7 +43,7 @@ This leaves us with 2 pages that need to be made, with one request for each page
 
 -------------------------------
 
-### Patient Home Functionality
+### Patient Home Basic Functionality
 
 STEP 1: Set up retrieve patient by UUID route in API
   modified:   server/api/patients.js
@@ -61,3 +61,4 @@ STEP 3: communicate between PatientHome and Reducer to fill in front end
     modified:   client/containers/PatientHome.jsx
     modified:   client/reducers/patient.js (small formatting changes)
   * A couple of the components needed to be changed in order to account for the differences in the dummy data and the actual database data, and the file functionality still needs to be fleshed out.
+
