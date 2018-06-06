@@ -3,32 +3,35 @@ import axios from 'axios';
 /**
  * ACTION TYPES
  */
+
 const GET_SINGLE_PATIENT = 'GET_SINGLE_PATIENT';
 
 /**
  * ACTION CREATORS
  */
-const getSinglePatient = (patientInfo) => ({ type: GET_SINGLE_PATIENT, patientInfo });
+export const getSinglePatientAction = (patientInfo) => ({
+  type: GET_SINGLE_PATIENT, patientInfo,
+});
 
 /**
  * REDUCER
  */
-export default function (patientInfo = {}, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_PATIENT:
       return action.patientInfo;
     default:
-      return patientInfo;
+      return state;
   }
 }
 
 /**
  * THUNK CREATORS
  */
-export const fetchAvailability = (uuid) => (dispatch) => {
+export const getSinglePatient = (uuid) => (dispatch) => {
   axios.get(`/api/patients/${uuid}`)
     .then((res) =>
-      dispatch(getSinglePatient(res.data)))
+      dispatch(getSinglePatientAction(res.data)))
     .catch((err) => console.log(err));
 };
 

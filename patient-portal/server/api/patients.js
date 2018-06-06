@@ -25,7 +25,7 @@ export default Router()
   })
   .get('/:id', (req, res) => {
     // BO: Now gets the users information by their UUID, represented by req.params.id
-    const patient = Api.Patient.getById(req.params.id);
+    const patient = Api.Patient.getByUserId(req.params.id);
     // const patient = Api.Patient.get(req.params.id);
     res.status(200).send(hydratePatientData(patient));
   });

@@ -56,11 +56,11 @@ function createApi(model) {
       }
       return db.get(model.name).value();
     },
-    getById: (param) => {
+    getByUserId: (param) => {
       if (_.isString(param) || _.isNumber(param)) {
         return db
           .get(model.name)
-          .find({ id: param })
+          .find({ user_id: param })
           .value();
       }
       if (_.isObject(param)) {
