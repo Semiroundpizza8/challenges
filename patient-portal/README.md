@@ -70,7 +70,13 @@ STEP 1: Filter/Search dummy patients by name
   * To do this I turned DoctorHome into a stateful component, that way I could peek at what the user input into the TextField comp and filter down the array of patients using it.
 
 STEP 2: Replace dummy patients with actual patient data
-  * Set up back-end route for getting patients by doctorId
+  * Set up back-end route for getting patients using doctorId
+    - After considering multiple different routes for getting this data, I came to the conclusion that one of the most efficient ways to do it would be to 
+    1. retrieve the appointments associated with the doctor
+    2. store the unique patient_ids within a separate array
+    3. and retrieve the patient and user information of the id's within that array.
+    - Even though I'll end up using addresses and appointment info later on, I decided to only send back the relevant patient information in order to cut back on collecting redundant data for its usecase.
+    
   * Set up reducer
   * Load data on componentDidMount
   * Fill in front-end

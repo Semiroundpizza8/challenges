@@ -7,7 +7,8 @@ import { withStyles } from 'material-ui/styles';
 
 import PatientList from '../components/PatientList';
 
-import { patients } from '../dummyData';
+import { connect } from 'react-redux';
+import { getDoctorsPatients } from '../reducers/doctorsPatients';
 
 const styles = {
   welcomeMessage: {
@@ -39,14 +40,23 @@ class DoctorHome extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.initInfo(this.props.user.id);
+  }
+
   onFilterChange = (event) => {
     this.setState({ filterText: event.target.value });
   }
+
   render() {
+    if (!this.props.doctorsPatients) return (<div>Loading</div>);
+
     const classes = { ...this.props.classes };
+    const patients = [...this.props.doctorsPatients];
 
     const tempPatients = patients.filter((currPatient) => {
-      const name = currPatient.name.toLowerCase();
+      let name = `${currPatient.firstName} ${currPatient.lastName}`;
+      name = name.toLowerCase();
       const filter = this.state.filterText.toLowerCase();
       return name.includes(filter);
     });
@@ -79,6 +89,19 @@ class DoctorHome extends React.Component {
 
 DoctorHome.propTypes = {
   classes: PropTypes.object.isRequired,
+  user: PropTypes.object,
+  doctorsPatients: PropTypes.array,
 };
 
-export default withStyles(styles)(DoctorHome);
+const mapState = (state) => ({
+  user: state.user,
+  doctorsPatients: state.doctorsPatients,
+});
+
+const mapDispatch = (dispatch) => ({
+  initInfo: (uuid) => {
+    dispatch(getDoctorsPatients(uuid));
+  },
+});
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(DoctorHome));
