@@ -8,7 +8,6 @@ import { withStyles } from 'material-ui/styles';
 import PatientList from '../components/PatientList';
 
 import { patients } from '../dummyData';
-import patient from '../reducers/patient';
 
 const styles = {
   welcomeMessage: {
@@ -37,7 +36,7 @@ class DoctorHome extends React.Component {
     super(props);
     this.state = {
       filterText: '',
-    }
+    };
   }
 
   onFilterChange = (event) => {
@@ -45,9 +44,6 @@ class DoctorHome extends React.Component {
   }
   render() {
     const classes = { ...this.props.classes };
-    // const patients = { ...this.props.patients };
-    console.log('CURR FILTER', this.state.filterText);
-    console.log('CURR PATIENTS', patients);
 
     const tempPatients = patients.filter((currPatient) => {
       const name = currPatient.name.toLowerCase();
@@ -77,9 +73,9 @@ class DoctorHome extends React.Component {
           }
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 DoctorHome.propTypes = {
   classes: PropTypes.object.isRequired,
