@@ -68,7 +68,12 @@ STEP 3: communicate between PatientHome and Reducer to fill in front end
 STEP 1: Filter/Search dummy patients by name
     modified:   client/containers/DoctorHome.jsx
   * To do this I turned DoctorHome into a stateful component, that way I could peek at what the user input into the TextField comp and filter down the array of patients using it.
+
 STEP 2: Replace dummy patients with actual patient data
+  * Set up back-end route for getting patients by doctorId
+  * Set up reducer
+  * Load data on componentDidMount
+  * Fill in front-end
 
 STEP 3: Allow for doctor to load a proper patient detail page
 
