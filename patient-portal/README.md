@@ -70,6 +70,12 @@ STEP 1: Filter/Search dummy patients by name
   * To do this I turned DoctorHome into a stateful component, that way I could peek at what the user input into the TextField comp and filter down the array of patients using it.
 
 STEP 2: Replace dummy patients with actual patient data
+  modified:   client/components/PatientList.jsx
+  modified:   client/containers/DoctorHome.jsx
+  modified:   client/containers/DoctorPatient.jsx
+  modified:   server/api/doctors.js
+  created:    client/reducers/doctorsPatients.js
+
   * Set up back-end route for getting patients using doctorId
     - After considering multiple different routes for getting this data, I came to the conclusion that one of the most efficient ways to do it would be to 
     1. retrieve the appointments associated with the doctor
@@ -82,5 +88,12 @@ STEP 2: Replace dummy patients with actual patient data
   * Fill in front-end
 
 STEP 3: Allow for doctor to load a proper patient detail page
+    modified:   client/components/PatientList.jsx
+    modified:   client/containers/DoctorHome.jsx
+    modified:   client/containers/DoctorPatient.jsx
+    modified:   client/reducers/patient.js
+    modified:   server/api/patients.js
+
+  * Even though I already had a route using the uuid to find a patients information, I felt like it'd be a security concern to use that same api route to get a patients information from a Doctors point of view. This is because a user UUID is tied to a user's login information, which a doctor should not have access to (or, for the sake of this case study, at least not have access to seeing it in the URL).
 
 STEP 4:

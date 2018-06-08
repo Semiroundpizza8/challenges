@@ -23,6 +23,13 @@ export default Router()
     const allPatients = Api.Patient.get();
     res.status(200).send(allPatients.map(hydratePatientData));
   })
+  .get('/byid/:id', (req, res) => {
+    const patient = db.get(MODELS.PATIENT)
+      .find({ id: req.params.id })
+      .value();
+
+    res.status(200).send(hydratePatientData(patient));
+  })
   .get('/:id', (req, res) => {
     // BO: Now gets the users information by their UUID, represented by req.params.id
     const patient = Api.Patient.getByUserId(req.params.id);

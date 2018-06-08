@@ -63,7 +63,7 @@ class DoctorHome extends React.Component {
 
     return (
       <div className="container">
-        <h2 className={classes.welcomeMessage}>Welcome back, Dr. McGonagall.</h2>
+        <h2 className={classes.welcomeMessage}>Welcome back, Dr.{this.props.user.lastName}.</h2>
         <div className={classes.patients}>
           {patients ?
             <div>
